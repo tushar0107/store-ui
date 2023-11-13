@@ -12,3 +12,9 @@ const suggestText = ()=>{
     document.getElementById('suggestion').style.display = "block";
     console.log(document.getElementById('header-input').value);
 }
+const openMenu = ()=>{
+    document.getElementById('menu-drawer').style.right = "0";
+}
+const closeMenu = ()=>{
+    document.getElementById('menu-drawer').style.right = "-70%";
+}
