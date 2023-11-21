@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="index.js"></script>
     <title>Document</title>
 </head>
 <body>
-    profilepage
+    <!-- header -->
+    <div id="header">
+        <div class="logo">NAME</div>
+        <div id="mob-nav">
+            <ul>
+                <li><a href="product.html"><img src="logout.png" alt="logout" class="icon-img search"></a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div id="login-modal">
+        <h3>Login</h3>
+        <form action="login">
+            <input type="text" name="username" class="username input" placeholder="Enter username"/>
+            <label for="password" class="password-toggle">
+                <input type="password" name="password" id="password" class="password input" placeholder="Enter Password"/>
+                <img src="view.png" alt="" class="icon-img view" id="pass-eye" onclick=togglePassword(true)>
+                <img src="hide.png" alt="" class="icon-img hide" id="pass-hide" onclick=togglePassword(false)>
+            </label>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
