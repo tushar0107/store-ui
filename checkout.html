@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            margin: 0;
+        }
+        #checkout-form {
+            width: 100%;
+        }
+
+        #checkout-form form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+        }
+
+        .product-item {
+            width: min(700px, 90%);
+            margin: 2rem auto;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 0 8px 4px grey;
+        }
+
+        .order-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-details *{
+            display: block;
+        }
+
+        .order-details img.product-img {
+            width: 60px;
+            aspect-ratio: 1/1;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantity button,
+        .quantity input {
+            display: block;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+
+        .total-price-block {
+            position: absolute;
+            z-index: 10;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            display: grid;
+            grid-template-columns: 80% 20%;
+            border-radius: 8px;
+            background-color: #f0f8ff;
+            color: white;
+        }
+
+        .total-price {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .submit-button{
+
+        }
+    </style>
+    <script>
+        var totalPrice  = document.getElementById('1').innerText;
+        var totalOrderPrice = totalPrice;
+        function addQuantity(id, price){
+            totalPrice = totalPrice + price;
+            document.getElementById(id).innerHTML = totalPrice;
+        }
+        function addQuantity(id, price){
+            totalPrice = totalPrice - price;
+            document.getElementById(id).innerHTML = totalPrice;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="checkout-form">
+        <form action="/modify-order" method="post">
+            <input type="hidden" name="product" value="{{product.id}}">
+            <div class="product-item">
+                <p class="product-name">{{product.name}}</p>
+                <div class="order-details">
+                    <img src="./banner1.jpg" alt="" class="product-img">
+                    <div class="quantity">
+                        <!-- addQuantity(product.id,product.price) -->
+                        <button onclick=addQuantity(1,899)>+</button>
+                        <span id="1">1</span>
+                        <button onclick=subQuantity(1,899)>-</button>
+                    </div>
+                    <div class="price">
+                        <span id="1-899">899/-</span>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="product" value="{{product.id}}">
+            <div class="product-item">
+                <p class="product-name">{{product.name}}</p>
+                <div class="order-details">
+                    <img src="./banner1.jpg" alt="" class="product-img">
+                    <div class="quantity">
+                        <button onclick=addQuantity() class="quantity-btn">+</button>
+                        <span id="2">1</span>
+                        <button onclick=subQuantity() class="quantity-btn">-</button>
+                    </div>
+                    <div class="price">
+                        <span id="2-4400">899/-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="total-price-block">
+                <div class="total-price">
+                    <label for="total-price">Total Price</label>
+                    <input type="number" class="total-price" value="total-price" name="price">
+                </div>
+                <button type="submit" class="submit-button">Create Order</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
