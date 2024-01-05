@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            position: absolute;
+            inset: 0 0 0 0;
+            z-index: 100;
+            background-color: #0000009a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #pre-image {
+            width: 200px;
+
+        }
+        #mouse {
+            position: absolute;
+            z-index: 500;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="image">
+    <button type="button" id="crop">Crop</button>
+    <img src="/banner1.jpg" id="pre-image" alt="">
+    <br>
+    <div id="container">
+        <canvas id="canvas" width='700' height="500"> </canvas>
+
+        <div id="mouse"></div>
+    </div>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        image = new Image();
+        image.src = document.getElementById('pre-image').src;
+        image.onload = function () {
+            const imgWidth = image.width;
+            const imgHeight = image.height;
+
+            // Calculate scaling factors for width and height
+            const scaleFactorWidth = canvas.width / imgWidth;
+            const scaleFactorHeight = canvas.height / imgHeight;
+
+            // Choose the smaller scaling factor to ensure the entire image fits in the canvas
+            const scaleFactor = Math.min(scaleFactorWidth, scaleFactorHeight);
+
+            // Calculate the scaled dimensions
+            const scaledWidth = imgWidth * scaleFactor;
+            const scaledHeight = imgHeight * scaleFactor;
+
+            // Set the canvas dimensions to match the scaled image
+            canvas.width = scaledWidth;
+            canvas.height = scaledHeight;
+            ctx.drawImage(image, 0, 0, scaledWidth, scaledHeight);
+        }
+
+
+
+        function getRectPoints(event) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
+            };
+        }
+
+        // Function to draw the rectangle
+        function drawRectangle(startX, startY, endX, endY) {
+            const width = endX - startX;
+            const height = endY - startY;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            let cropX = startX * (image.width / canvas.width);
+            let cropY = startY * (image.height / canvas.height);
+            let cropWidth = width * (image.width / canvas.width);
+            let cropHeight = height * (image.height / canvas.height);
+
+            canvas.width = cropWidth;
+            canvas.height = cropHeight;
+
+            ctx.drawImage(
+                image,
+                cropX,
+                cropY,
+                cropWidth,
+                cropHeight,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+        }
+        let isDrawing = false;
+        let startX, startY, endX, endY;
+
+        // Event listener for mouse click
+        canvas.addEventListener('mousedown', function (event) {
+            isDrawing = true;
+            const mousePos = getMousePos(event);
+            startX = mousePos.x;
+            startY = mousePos.y;
+        });
+
+        // Event listener for mouse release
+        canvas.addEventListener('mouseup', function (event) {
+            if (isDrawing) {
+                const mousePos = getRectPoints(event);
+                endX = mousePos.x;
+                endY = mousePos.y;
+                isDrawing = false;
+                drawRectangle(startX, startY, endX, endY);
+            }
+        });
+        
+
+
+
+
+        function getMousePos(event) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+
+            return {
+                x: (event.clientX - rect.left) * scaleX,
+                y: (event.clientY - rect.top) * scaleY
+            };
+        }
+
+        canvas.addEventListener('mousemove', function (event) {
+            const mousePos = getMousePos(event);
+            // console.log(`Mouse X: ${mousePos.x}, Mouse Y: ${mousePos.y}`);
+            document.getElementById('mouse').innerHTML = `X: ${mousePos.x}, Y: ${mousePos.y}`;
+        });
+    </script>
+</body>
+
+</html>

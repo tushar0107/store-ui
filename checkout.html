@@ -95,13 +95,15 @@
             totalPrice = totalPrice - price;
             document.getElementById(id).innerHTML = totalPrice;
         }
+
+        var checkout_list = {}
     </script>
 </head>
 
 <body>
     <div id="checkout-form">
         <form action="/modify-order" method="post">
-            <input type="hidden" name="product" value="{{product.id}}">
+            <input type="hidden" name="product" value="2">
             <div class="product-item">
                 <p class="product-name">{{product.name}}</p>
                 <div class="order-details">
@@ -117,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="product" value="{{product.id}}">
+            <input type="hidden" name="product" value="4">
             <div class="product-item">
                 <p class="product-name">{{product.name}}</p>
                 <div class="order-details">
