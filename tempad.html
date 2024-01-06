@@ -23,7 +23,7 @@
             position: absolute;
             z-index: 1;
             left: 0;
-            bottom: calc(1rem + 12px);
+            bottom: calc(2rem + 12px);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -37,29 +37,50 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 1rem;
             padding: 6px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
         }
         #bottom-bar span{
             letter-spacing: 3px;
         }
         #main-menu{
-            display: grid;
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
             width: 50%;
-            height: 90%;
+            flex-wrap: wrap;
             margin-left: 2rem;
-            padding: 1rem;
-            grid-template-columns: 50% 50%;
-            grid-template-rows: 50% 50%;
+            margin-top: 2rem;
             letter-spacing: 4px;
             text-align: center;
         }
         #main-menu .menu-item{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
             padding: 1rem;
-            width: 100%;
+            width: 40%;
         }
         .menu-item img{
-            width: 100px;
+            width: 150px;
+            object-fit: contain;
+        }
+        #action-list{
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 70%;
+        }
+
+
+        *{
+            border: 1px solid red;
         }
     </style>
 </head>
@@ -79,23 +100,30 @@
                 <p>TIMEDOOR</p>
             </div>
             <div class="menu-item">
-                <img src="setting.png" alt="">
-                <p>TIMEDOOR</p>
+                <img src="miss-minutes.png" alt="">
+                <p>MISS MINUTES</p>
             </div>
             <div class="menu-item">
-                <img src="time-door.png" alt="">
-                <p>TIMEDOOR</p>
+                <img src="settings.png" alt="">
+                <p>SETTINGS</p>
             </div>
             <div class="menu-item">
-                <img src="time-door.png" alt="">
-                <p>TIMEDOOR</p>
+                <img src="directory.png" alt="">
+                <p>DIRECTORY</p>
             </div>
         </div>
-
+<div id="action-list">
+    <h2>ACTION LIST / / / /</h2>
+    <h2>SELECT PROGRAM</h2>
+    <p>1. OPTIONS</p>
+    <p>2. RUN PROGRAMS</p>
+    <p>3. CLEAR CACHE</p>
+</div>
 
 
         <div id="bottom-bar">
             <span class="bottom-date">04.12.1705</span>
+            <span>0232.467  //  9751.202</span>
         </div>
     </div>
 </body>
