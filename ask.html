@@ -31,7 +31,7 @@
             margin: 2rem auto;
         }
         #img-love{
-            display: none;
+            display: none !important;
         }
         #chat-actions{
             width: 100%;
@@ -78,8 +78,8 @@
             const imgAsk = document.getElementById('img-ask');
             const imgLove = document.getElementById('img-love');
             nobtn.addEventListener('mouseenter', ()=>{
-                var randomX = Math.floor(Math.random(20,200)*100);
-                var randomY = Math.floor(Math.random(20,700)*100);
+                var randomX = Math.floor(Math.random(20,window.width-50)*100);
+                var randomY = Math.floor(Math.random(20,window.height-50)*100);
                 console.log('X: ',randomX, 'Y: ', randomY);
                 nobtn.style.position = 'absolute';
                 nobtn.style.top = `${randomY}px`;
@@ -88,7 +88,7 @@
             yesbtn.addEventListener('click',function(){
                 resp.innerHTML = "I knew you love me sooo much 😘😘!!";
                 imgAsk.style.display = "none";
-                imgLove.style.disolay = " block";
+                imgLove.style.display = "block";
             })
         });
 
