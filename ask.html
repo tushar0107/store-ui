@@ -25,13 +25,17 @@
             margin: 0 auto;
         }
         #emoji-img img{
-            display: block;
             width: 200px;
             object-fit: contain;
-            margin: 2rem auto;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            z-index: 5;
         }
         #img-love{
             display: none;
+            z-index: 2;
         }
         #chat-actions{
             width: 100%;
