@@ -24,6 +24,15 @@
             height: 50vh;
             margin: 0 auto;
         }
+        #emoji-img img{
+            display: block;
+            width: 200px;
+            object-fit: contain;
+            margin: 2rem auto;
+        }
+        #img-love{
+            display: none;
+        }
         #chat-actions{
             width: 100%;
             display: flex;
@@ -66,16 +75,20 @@
             const nobtn = document.getElementById("nobtn");
             const yesbtn = document.getElementById('yesbtn');
             const resp = document.getElementById('response');
+            const imgAsk = document.getElementById('img-ask');
+            const imgLove = document.getElementById('img-love');
             nobtn.addEventListener('mouseenter', ()=>{
-                var randomX = Math.floor(Math.random(200,500)*1000);
-                var randomY = Math.floor(Math.random(400,700)*100);
+                var randomX = Math.floor(Math.random(20,200)*100);
+                var randomY = Math.floor(Math.random(20,700)*100);
                 console.log('X: ',randomX, 'Y: ', randomY);
                 nobtn.style.position = 'absolute';
                 nobtn.style.top = `${randomY}px`;
                 nobtn.style.left = `${randomX}px`;
             });
             yesbtn.addEventListener('click',function(){
-                resp.innerHTML = "dhfkj";
+                resp.innerHTML = "I knew you love me sooo much 😘😘!!";
+                imgAsk.style.display = "none";
+                imgLove.style.disolay = " block";
             })
         });
 
@@ -87,9 +100,10 @@
     <div id="main-container">
         <div id="chat-container">
             <div id="emoji-img">
-                
+                <img id="img-ask" src="hehehehe.gif" alt=""/>
+                <img id="img-love" src="ositos.gif" alt=""/>
             </div>
-            <h1 id="response"></h1>
+            <h1 id="response">Hey!!! Will you go on a date with me... pleasee???</h1>
             <div id="chat-actions">
                 <button id="nobtn">abc</button>
                 <button id="yesbtn">Yes</button>
