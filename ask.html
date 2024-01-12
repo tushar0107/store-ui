@@ -85,16 +85,16 @@
             const imgAsk = document.getElementById('img-ask');
             const imgLove = document.getElementById('img-love');
             nobtn.addEventListener('mouseenter', ()=>{
-                var randomX = Math.floor(Math.random(20,screen.width)*100);
-                var randomY = Math.floor(Math.random(20,screen.height)*100);
+                var randomX = Math.floor(Math.random(20,screen.width)*1000);
+                var randomY = Math.floor(Math.random(20,screen.height)*1000);
                 console.log('X: ',randomX, 'Y: ', randomY);
                 nobtn.style.position = 'absolute';
                 nobtn.style.top = `${randomY}px`;
                 nobtn.style.left = `${randomX}px`;
             });
             nobtn.addEventListener('click', ()=>{
-                var randomX = Math.floor(Math.random(20,screen.width)*100);
-                var randomY = Math.floor(Math.random(20,screen.height)*100);
+                var randomX = Math.floor(Math.random(20,screen.width)*1000);
+                var randomY = Math.floor(Math.random(20,screen.height)*1000);
                 console.log('X: ',randomX, 'Y: ', randomY);
                 nobtn.style.position = 'absolute';
                 nobtn.style.top = `${randomY}px`;
