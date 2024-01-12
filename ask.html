@@ -85,8 +85,8 @@
             const imgAsk = document.getElementById('img-ask');
             const imgLove = document.getElementById('img-love');
             nobtn.addEventListener('mouseenter', ()=>{
-                var randomX = Math.floor(Math.random(20,screen.width)*1000);
-                var randomY = Math.floor(Math.random(20,screen.height)*1000);
+                var randomX = Math.floor(Math.random(20,screen.width)*300);
+                var randomY = Math.floor(Math.random(20,screen.height)*600);
                 console.log('X: ',randomX, 'Y: ', randomY);
                 nobtn.style.position = 'absolute';
                 nobtn.style.top = `${randomY}px`;
