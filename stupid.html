@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-image: linear-gradient(to top,#e2179e, #ac45e7);
+        }
+        #main-container{
+            width: 100%;
+            height: 100vh;
+            background-color: transparent;
+        }
+        #chat-container{
+            width: min(100%, 900px);
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: transparent;
+        }
+        #emogi-img{
+            width: fit-content;
+            height: 50vh;
+            margin: 0 auto;
+        }
+        #emoji-img img{
+            width: 200px;
+            object-fit: contain;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            z-index: 5;
+        }
+        #img-love{
+            display: none;
+            z-index: 2;
+        }
+        #chat-actions{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        button{
+            position: relative;
+            z-index: 10;
+            padding: 1rem 1.5rem;
+            transition: .3s ease;
+            background-color: #0c9fda;
+            border: none;
+            outline: none;
+            border-radius: 12px;
+        }
+        
+    </style>
+    <script>
+        var count = 0;
+        // const first = 'Hey!! I want to ask you something';
+        // const yesArr = [
+        //     "Heyy!! Whatsup?",
+        //     "Are you free today?",
+        //     "Ohh My God!! That's Awesomeee. ",
+        //     ""
+        // ];
+        // const noArr = [
+        //     "Ohh... That's rude!!",
+        //     "Ohh!! My bad.<br /> May I ask you for any other day.. Pleeeease!!",
+        //     "Okay..<br />I think you don't love me.",
+
+        // ];
+        // const btnYesText = [
+
+        // ];
+        // const btnNoText = [
+
+        // ];
+        document.addEventListener('DOMContentLoaded',function(){
+            const nobtn = document.getElementById("nobtn");
+            const yesbtn = document.getElementById('yesbtn');
+            const resp = document.getElementById('response');
+            const imgAsk = document.getElementById('img-ask');
+            const imgLove = document.getElementById('img-love');
+            nobtn.addEventListener('mouseenter', ()=>{
+                var randomX = Math.floor(Math.random(20,screen.width)*300);
+                var randomY = Math.floor(Math.random(20,screen.height)*600);
+                console.log('X: ',randomX, 'Y: ', randomY);
+                nobtn.style.position = 'absolute';
+                nobtn.style.top = `${randomY}px`;
+                nobtn.style.left = `${randomX}px`;
+            });
+            nobtn.addEventListener('click', ()=>{
+                var randomX = Math.floor(Math.random(20,screen.width)*300);
+                var randomY = Math.floor(Math.random(20,screen.height)*600);
+                console.log('X: ',randomX, 'Y: ', randomY);
+                nobtn.style.position = 'absolute';
+                nobtn.style.top = `${randomY}px`;
+                nobtn.style.left = `${randomX}px`;
+            });
+            yesbtn.addEventListener('click',function(){
+                resp.innerHTML = "I knew you are!!";
+                imgAsk.style.display = "none";
+                imgLove.style.display = "block";
+            })
+        });
+
+
+        
+    </script>
+</head>
+<body>
+    <div id="main-container">
+        <div id="chat-container">
+            <div id="emoji-img">
+                <img id="img-ask" src="hehehehe.gif" alt=""/>
+                <img id="img-love" src="ositos.gif" alt=""/>
+            </div>
+            <h1 id="response">Hey!!! I want to ask you something... <br>Are you stupid???</h1>
+            <div id="chat-actions">
+                <button id="nobtn">No</button>
+                <button id="yesbtn">Yes</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
