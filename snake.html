@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var pos = 0;
+            for(let i=0;i<200;i++){
+                document.getElementById('snake').style.left=pos+'px';
+                pos=pos+20;
+                setTimeout(()=>{},300);
+            };
+        })
+    </script>
+    <style>
+        div#game-space {
+    height: 98vh;
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid red;
+}
+#snake{
+    width: 40px;
+    height: 8px;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.snake-body {
+    width: 20px;
+    height: 20px;
+    background-color: antiquewhite;
+}
+    </style>
+</head>
+<body show-background-image="" style="background-color: rgb(160 160 160);">
+    <main>
+    <button onclick=run()>click</button>
+       <div id="game-space">
+    <div id="snake">
+        <!-- <span class="snake-body"></span>
+        <span class="snake-body"></span>
+        <span class="snake-body"></span> -->
+    </div>
+</div>
+    
+    </main>
+</body>
+</html>
