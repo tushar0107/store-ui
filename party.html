@@ -10,53 +10,102 @@
             height: 10px;
             position: relative;
             transition: 10s linear;
+            animation: giggle .7s linear infinite;
+        }
+        @keyframes giggle {
+            0%{
+                right: 0;
+            }
+            50%{
+                right: 10px;
+            }
+            100%{
+                right: 0;
+            }
+        }
+        @keyframes move {
+            0%{
+                top: -100%;
+            }
+            100%{
+                top: 100%;
+            }
         }
         #ele{
+            /* display: none; */
             width: 100vw;
             height: 100vh;
             position: absolute;
-            z-index: -1;
+            z-index: 10;
+            top: -100%;
             background-color: transparent;
-            transition: 6s ease;
+            animation: move 6s linear infinite;
         }
+        #teddy, #text{
+            width: 100%;
+            position: absolute;
+            z-index: 5;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 400px;
+            background-color: grey;
+        }
+        
+        #text {
+            top: -500px;
+            font-size: 200%;
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: 1000;
+            background-color: transparent;
+            letter-spacing: 7px;
+            transition: all 1s ease-in-out 1s;
+        }
+        #text h1{
+            color: black;
+            /* -webkit-text-stroke: 2px #00b7ff; */
+            /* color: #00b7ff; */
+            /* filter: drop-shadow(0px 0px 10px #00b7ff); */
+        }
+
+
         body{
-            /* overflow: hidden; */
+            overflow: hidden;
             margin: 0;
         }
+        
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             const height = window.innerHeight;
             const width = window.innerWidth;
-            var colors = ['pink','green','lime','lightskyblue','yellow','lavender','voilet','maroon','red','orange'];
-            // for(let i=0;i<50;i++){
-            //     const piece = document.createElement('div');
-            //     piece.setAttribute('class','glitter');
-            //     piece.setAttribute('style',`background-color:${colors[Math.floor(Math.random(0,11)*10)]};transform:rotateZ(${Math.floor(Math.random(0,360)*100)}deg);top:${Math.floor(Math.random(0,height)*1000)}px;left:${Math.floor(Math.random(0,width)*1500)}px;`)
-            //     document.body.appendChild(piece);
-                
-            // }
-            setInterval(()=>{
+            var colors = ['pink','green','lime','red','yellow','cyan','hotpink','maroon','red','orange'];
+            var rotation = [23,12,341,46,14,110,121,20,90,116];
+            
+            for(let i=0;i<100;i++){
                 const piece = document.createElement('div');
                 piece.setAttribute('class','glitter');
-                piece.setAttribute('style',`background-color:${colors[Math.floor(Math.random(0,11)*10)]};transform:rotateZ(${Math.floor(Math.random(0,360)*100)}deg);top:${Math.floor(Math.random(0,height)*1000)}px;left:${Math.floor(Math.random(0,width)*1500)}px;`)
-                document.body.appendChild(piece);
-            },50);
-
-
-            // setInterval(()=>{
-                var spi = document.getElementsByClassName('glitter');
-                for(let j=0;j<spi.length;j++){
-                    if(spi[j].offsetTop<height){
-                        spi[j].style.top = Math.floor(Math.random(0,height)*1000)+'px';
-                    }
-                }
-            // },100);
+                piece.setAttribute('style',`background-color:${colors[Math.floor(Math.random(0,11)*10)]};
+                                        transform:rotateZ(${rotation[Math.floor(Math.random(0,11)*10)]}deg);
+                                        left:${parseInt(Math.random(10,width)*1500)}px;`);
+                document.getElementById('ele').appendChild(piece);
+            }
+                
+            document.getElementById('text').style.top = '0px';
+            
         });
     </script>
 </head>
 <body>
     <div id="ele">
+
+    </div>
+    <div id="teddy">
+
+    </div>
+    <div id="text">
+        <h1>ahjsdkj</h1>
 
     </div>
 </body>
