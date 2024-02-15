@@ -61,14 +61,14 @@
             transition: all 1s ease-in-out 1s;
         }
         #text h1{
-            color: black;
-            /* -webkit-text-stroke: 2px #00b7ff; */
-            /* color: #00b7ff; */
-            /* filter: drop-shadow(0px 0px 10px #00b7ff); */
+            
+             -webkit-text-stroke: 2px #00b7ff;
+            color: #00b7ff;
+            filter: drop-shadow(0px 0px 10px #00b7ff);
         }
 
 
-        body{
+        body,html{
             overflow: hidden;
             margin: 0;
         }
@@ -76,17 +76,18 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
-            const height = window.innerHeight;
-            const width = window.innerWidth;
+            const height = window.outerHeight;
+            //const width = window.outerWidth;
+            const width = 400;
             var colors = ['pink','green','lime','red','yellow','cyan','hotpink','maroon','red','orange'];
             var rotation = [23,12,341,46,14,110,121,20,90,116];
-            
-            for(let i=0;i<100;i++){
+            //const pos = [10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200];
+            for(let i=0;i<60;i++){
                 const piece = document.createElement('div');
                 piece.setAttribute('class','glitter');
                 piece.setAttribute('style',`background-color:${colors[Math.floor(Math.random(0,11)*10)]};
                                         transform:rotateZ(${rotation[Math.floor(Math.random(0,11)*10)]}deg);
-                                        left:${parseInt(Math.random(10,width)*1500)}px;`);
+                                        left:${Math.floor(Math.random(10,width)*1000)}px;`);
                 document.getElementById('ele').appendChild(piece);
             }
                 
