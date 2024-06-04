@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine;wght@400;700%display=swap" rel="stylesheet">
+    <title>Shubham and Bharati</title>
+    <style>
+    *{
+      /*border: 1px solid red;*/
+    }
+    body{
+      margin:0;
+    }
+      #main-container{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 150px;
+        color: #b2720b;
+      }
+      #bg-img{
+        display: block;
+        position: absolute;
+        z-index: -100;
+        width: 100%;
+        height: 100%;
+        inset: 0 0 0 0;
+      }
+      #inner-container{
+        width: fit-content;
+        position: absolute;
+        bottom: 40px;
+        right: 50px;
+        text-align: center;
+      }
+      .matter-text{
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Tangerine', cursive;
+      }
+      #names{
+        position: absolute;
+        inset: 0 0 0 0;
+      }
+      #time{
+        color: #b2720b;
+        text-wrap: nowrap;
+        text-shadow: 3px 3px 6px #c7c7c7a0;
+        font-size: 12px;
+        opacity: 0;
+        transition: .6s ease-in;
+        transition-delay: 5s;
+        font-family: 'Tangerine', cursive;
+      }
+      #time > span{
+        font-size: 24px;
+      }
+      svg {
+        font-family: 'Tangerine', cursive;
+        position:absolute;
+        width: 100%; 
+        height: 100%;
+        display: flex;
+      }
+      svg text {
+        text-transform: uppercase; 
+        animation: stroke 5s ease-in;
+        stroke-width: 2px;
+        stroke: #b2720b;
+        font-size: 36px;
+        transform: scale(1.5);
+      }
+@keyframes stroke {
+  0%{
+    fill: rgba(72,138,20,0);
+    stroke: #b2720b;
+    stroke-dashoffset: 5%; 
+    stroke-dasharray: 0 25%;
+    stroke-width: 2px;
+  }
+20% {
+  fill: rgba(72,138,20,0);
+  stroke: #b2720b;
+}
+60% {
+  fill: rgba(72,138,20,0);
+  stroke: #b2720b;
+  stroke-width: 2px;
+}
+100% {
+  fill: rgba(72,138,20,0);
+  stroke: #b2720b;
+  stroke-dashoffset: 0%;
+  stroke-dasharray: 25% 0;
+  stroke-width: 2px;
+}
+}
+    </style>
+  </head>
+  <body>
+    <div id="main-container">
+      <img src="/invite.jpeg" id="bg-img">
+      <div class="matter-text">
+        Together <br> With their Families
+      </div>
+      <div id="names">
+        <svg>
+          <text x="25%" y="30%" text-anchor="middle" style="font-size:24px;">
+            Shubham
+          </text>
+          <text x="40%" y="35%" text-anchor="middle" style="font-size:24px;">
+             & Bharati
+          </text>
+        </svg>
+      </div>
+      <div class="matter-text">
+        We invite you to join our wedding
+        <h3 id="date">
+          Thursday 16<sup style="text-transform:lowercase;">th</sup>, August
+        </h3>
+      </div>
+      <div id="inner-container">
+        <h3 id="time"></h3>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var text = document.getElementById('time');
+      text.style.opacity = "1";
+      setInterval(()=>{
+        var d1 = new Date();
+        var d2 = new Date('2024-08-16 03:15:00');
+        var diff = d2-d1;
+        var days = parseInt(diff/(1000*60*60*24));
+        var hours = parseInt(diff/(1000*60*60))-(days*(24));
+        var mins = parseInt(diff/(1000*60))-((days*24)*60)-(hours*60);
+        var secs = parseInt(diff/(1000))-((days*24)*60*60)-(hours*60*60)-(mins*60);
+        text.innerHTML = `<span>${days}</span> Days <br> <span>${hours}</span> Hours: <span>${mins}</span> Mins: <span>${secs}</span> Seconds`; 
+      },1000);
+    });
+  </script>
+</html>
