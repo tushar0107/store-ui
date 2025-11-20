@@ -11,16 +11,20 @@
             position: relative;
             color: orangered;
         }
-        #main-container{
+         #main-container{
             width: calc(100vw - 2rem);
-            height: calc(100vh - 2rem);
+            height: calc(100vh - 4rem);
             margin: .75rem auto;
             border:3px solid #ff4500;
             overflow: hidden;
             position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
         }
         #side-menu{
-            position: absolute;
+            /* position: absolute; */
             z-index: 1;
             left: 0;
             bottom: calc(2rem + 12px);
@@ -46,14 +50,14 @@
             letter-spacing: 3px;
         }
         #main-menu{
-            display: flex;
-            justify-content: space-around;
-            align-items: stretch;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             width: 50%;
-            height: auto;
+            height: 80%;
             flex-wrap: wrap;
-            margin-left: 2rem;
-            margin-top: 2rem;
+            /* margin-left: 2rem; */
+            /* margin-top: 2rem; */
             letter-spacing: 4px;
             text-align: center;
         }
@@ -62,24 +66,15 @@
             justify-content: flex-end;
             align-items: center;
             flex-direction: column;
-            padding: 1rem;
-            width: 40%;
+            font-size: 12px;
+            font-weight: 800;
         }
         .menu-item img{
-            width: max(100%,50px);
-            aspect-ratio: 1/1;
-            object-fit: contain;
+            width: max(35%,50px);
         }
         #action-list{
-            position: absolute;
-            z-index: 1;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45%;
-            height: 70%;
+            margin-right: 1rem;
         }
-
 
         *{
             /* border: 1px solid red; */
@@ -124,9 +119,16 @@
 
 
         <div id="bottom-bar">
-            <span class="bottom-date">04.12.1705</span>
+            <span id="bottom-date">04.12.1705</span>
             <span>0232.467  //  9751.202</span>
         </div>
     </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            var date = new Date();
+            document.getElementById('bottom-date').innerText = date.toLocaleDateString().replaceAll('/','.');
+        });
+    </script>
 </body>
 </html>
